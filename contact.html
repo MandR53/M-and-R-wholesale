@@ -1,1 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wholesalers — Contact</title>
+  <meta name="description" content="Reach out for buyer onboarding or deal submission. Clean, simple contact with fast responses." />
 
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Wholesalers — Contact" />
+  <meta property="og:description" content="Tell us your buy box or submit a deal. We reply with next steps and timing." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/logo.png" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --ink: #eef2ff;
+      --ink-dim: #c7cbe6;
+      --accent-us: #1d4ed8; /* USA blue */
+      --accent-ro: #facc15; /* RO yellow */
+      --accent-red: #ef4444; /* shared red */
+      --ring: rgba(255,255,255,0.2);
+      --ring-strong: rgba(255,255,255,0.35);
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --glass: rgba(255,255,255,0.04);
+      --error: #fecaca;
+      --success: #bbf7d0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 800px at 75% -10%, rgba(29,78,216,0.25), transparent 60%),
+        radial-gradient(1000px 700px at 20% 110%, rgba(250,204,21,0.25), transparent 65%),
+        var(--bg);
+      overflow-x: hidden;
+    }
+
+    /* subtle animated background logo */
+    .bg-logo::before {
+      content: "";
+      position: fixed; inset: 0;
+      background-image: url('assets/logo.png');
+      background-repeat: no-repeat; background-position: center 10vh;
+      background-size: min(70vmin, 720px);
+      opacity: 0.06; filter: saturate(0.8) contrast(110%);
+      pointer-events: none; z-index: -1;
+      animation: floaty 18s ease-in-out infinite alternate;
+    }
+    @keyframes floaty { from { transform: translateY(0) scale(1) } to { transform: translateY(-10px) scale(1.01) } }
+
+    /* header/nav */
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 20px clamp(16px, 4vw, 48px);
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(8px);
+      background: linear-gradient(to bottom, rgba(11,16,32,0.9), rgba(11,16,32,0.35));
+      border-bottom: 1px solid var(--ring);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+    .brand-logo {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent-us), var(--accent-ro), var(--accent-red));
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.08);
+    }
+    .brand-name { font-weight: 800; letter-spacing: 0.4px; }
+    nav { display: flex; gap: 10px; flex-wrap: wrap; }
+    .nav-link {
+      padding: 10px 14px; border-radius: 999px; color: var(--ink);
+      text-decoration: none; font-weight: 600; font-size: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid var(--ring);
+      transition: transform .15s ease, background .2s ease, box-shadow .2s ease, border-color .2s ease;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
+    .nav-link:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04));
+      border-color: var(--ring-strong);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+    }
+    .nav-link[aria-current="page"] {
+      border-color: var(--ring-strong);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.32);
+    }
+
+    /* hero */
+    .hero { display: grid; place-items: center; text-align: center; padding: clamp(32px, 7vw, 96px) 20px; }
+    .hero h1 { font-family: "Playfair Display", serif; font-size: clamp(28px, 6vw, 56px); line-height: 1.05; margin: 16px 0 10px; }
+    .hero p { font-size: clamp(15px, 2.3vw, 18px); color: var(--ink-dim); margin: 0 auto; max-width: 70ch; }
+
+    /* wrap */
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* quick action cards */
+    .quick {
+      display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr);
+      margin: 16px 0 24px;
+    }
+    .q-card {
+      grid-column: span 12;
+      border: 1px solid var(--ring); border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+      padding: clamp(16px, 2.8vw, 26px);
+      display: grid; grid-template-columns: 64px 1fr auto; gap: 16px; align-items: center;
+    }
+    .q-icon {
+      width: 64px; height: 64px; border-radius: 14px; border: 1px solid var(--ring);
+      background: conic-gradient(from 90deg, var(--accent-us), var(--accent-ro), var(--accent-red), var(--accent-us));
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.08);
+    }
+    .q-title { font-weight: 800; font-size: clamp(18px, 2.6vw, 22px); margin-bottom: 4px; }
+    .q-desc { color: var(--ink-dim); font-size: 14.5px; }
+    .q-cta {
+      border: 1px solid var(--ring); border-radius: 999px; padding: 10px 14px;
+      font-size: 13px; font-weight: 800; color: var(--ink); text-decoration: none;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      transition: transform .15s ease, border-color .2s ease, box-shadow .2s ease;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+      white-space: nowrap;
+    }
+    .q-cta:hover { transform: translateY(-2px); border-color: var(--ring-strong); box-shadow: 0 10px 20px rgba(0,0,0,0.35); }
+
+    @media (min-width: 900px) {
+      .q-half { grid-column: span 6; }
+    }
+
+    /* form section */
+    .section {
+      border: 1px solid var(--ring); border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+      padding: clamp(18px, 3vw, 28px);
+      margin-bottom: 24px; position: relative; overflow: hidden;
+    }
+    .section .tag {
+      position: absolute; top: 12px; right: 12px; font-size: 11px; font-weight: 700; letter-spacing: .8px;
+      padding: 6px 10px; border-radius: 999px; border: 1px solid var(--ring);
+      background-image: linear-gradient(90deg, var(--accent-us), var(--accent-ro), var(--accent-red));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .section h2 { font-size: clamp(18px, 3vw, 24px); margin-bottom: 10px; }
+    .section p { color: var(--ink-dim); font-size: 15px; }
+
+    form { margin-top: 12px; display: grid; gap: 14px; }
+
+    .row { display: grid; gap: 14px; grid-template-columns: 1fr; }
+    @media (min-width: 780px) { .row { grid-template-columns: 1fr 1fr; } }
+
+    .field {
+      display: grid; gap: 8px;
+    }
+    .label {
+      font-size: 13px; font-weight: 700; letter-spacing: .3px; opacity: .95;
+    }
+    .input, .select, .textarea {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--ring);
+      padding: 12px 14px;
+      font-size: 14.5px; color: var(--ink);
+      background: var(--glass);
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .input:focus, .select:focus, .textarea:focus {
+      border-color: var(--ring-strong);
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.08);
+    }
+    .textarea { min-height: 120px; resize: vertical; }
+
+    .hint { font-size: 12px; color: var(--ink-dim); }
+    .req { opacity: .8; font-weight: 800; }
+
+    .actions {
+      display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 6px;
+    }
+    .btn {
+      border: 1px solid var(--ring); border-radius: 999px; padding: 12px 16px;
+      font-size: 14px; font-weight: 800; color: var(--ink); text-decoration: none;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      transition: transform .15s ease, border-color .2s ease, box-shadow .2s ease;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); border-color: var(--ring-strong); box-shadow: 0 10px 20px rgba(0,0,0,0.35); }
+    .btn:active { transform: translateY(-1px) scale(0.995); }
+
+    .alt {
+      font-size: 13px; color: var(--ink-dim);
+    }
+    .alt a { color: var(--ink); text-decoration: underline; }
+
+    .alert {
+      display: none;
+      border-radius: 14px; padding: 10px 12px; font-size: 13px;
+      border: 1px solid var(--ring); background: rgba(255,255,255,0.03);
+    }
+    .alert.ok { display: none; color: var(--success); border-color: rgba(34,197,94,0.35); }
+    .alert.err { display: none; color: var(--error); border-color: rgba(239,68,68,0.35); }
+
+    /* mosaic shortcuts */
+    .mosaic { margin: 30px auto 70px; max-width: 1200px; padding: 0 20px; display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr); }
+    .tile {
+      grid-column: span 12; position: relative; overflow: hidden;
+      border-radius: 18px; border: 1px solid var(--ring);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: clamp(16px, 2.8vw, 26px);
+      text-decoration: none; color: var(--ink);
+      transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .tile:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(0,0,0,0.45); border-color: var(--ring-strong); }
+    .tile .title { font-weight: 800; font-size: clamp(18px, 2.6vw, 22px); margin-bottom: 4px; }
+    .tile .desc { color: var(--ink-dim); font-size: clamp(13px, 2.2vw, 15px); }
+    .tile::before, .tile::after {
+      content: ""; position: absolute; width: 160px; height: 160px;
+      background: conic-gradient(from 90deg, var(--accent-us), var(--accent-ro), var(--accent-red), var(--accent-us));
+      opacity: 0.12; filter: blur(8px); pointer-events: none;
+    }
+    .tile::before { bottom: -40px; left: -40px; transform: rotate(25deg); }
+    .tile::after { top: -40px; right: -40px; transform: rotate(-25deg); }
+
+    @media (min-width: 720px) {
+      .tile--third { grid-column: span 4; }
+      .tile--half { grid-column: span 6; }
+      .tile--wide { grid-column: span 12; }
+    }
+
+    /* footer */
+    footer {
+      border-top: 1px solid var(--ring);
+      padding: 24px clamp(16px, 4vw, 48px);
+      color: var(--ink-dim); font-size: 13px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    }
+    footer a { color: var(--ink); text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.2); }
+    footer a:hover { border-bottom-style: solid; }
+  </style>
+</head>
+
+<body class="bg-logo">
+  <!-- Header / Global Nav -->
+  <header>
+    <a class="brand" href="index.html" aria-label="Wholesalers Home">
+      <div class="brand-logo" aria-hidden="true"></div>
+      <div class="brand-name">WHOLESALERS</div>
+    </a>
+    <nav aria-label="Primary">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="options.html">Options</a>
+      <a class="nav-link" href="faq.html">FAQ</a>
+      <a class="nav-link" href="about.html">About</a>
+      <a class="nav-link" href="partners.html">Partners</a>
+      <a class="nav-link" href="issues.html">Issues</a>
+      <a class="nav-link" href="contact.html" aria-current="page">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">Contact</h1>
+      <p>Tell us your buy box or submit a deal. We’ll come back with next steps and a realistic timeline.</p>
+    </section>
+
+    <div class="wrap">
+      <!-- Quick actions -->
+      <section class="quick" aria-label="Quick actions">
+        <article class="q-card q-half">
+          <div class="q-icon" aria-hidden="true"></div>
+          <div>
+            <div class="q-title">I’m a Buyer</div>
+            <div class="q-desc">Share your criteria (zip, budget, beds/baths, rehab tolerance, exit). We’ll align the feed.</div>
+          </div>
+          <a class="q-cta" href="#contact-form">Start</a>
+        </article>
+
+        <article class="q-card q-half">
+          <div class="q-icon" aria-hidden="true"></div>
+          <div>
+            <div class="q-title">I’m Submitting a Deal</div>
+            <div class="q-desc">Send property basics, photos (if any), timeline constraints, and expected price.</div>
+          </div>
+          <a class="q-cta" href="#contact-form">Submit</a>
+        </article>
+      </section>
+
+      <!-- Contact form -->
+      <section class="section" aria-labelledby="form-title">
+        <span class="tag" aria-hidden="true">FORM</span>
+        <h2 id="form-title">Send a Message</h2>
+        <p>Use the form below or email us at <a href="mailto:hello@example.com" style="color: var(--ink); text-decoration: underline;">hello@example.com</a>.</p>
+
+        <!-- Success / Error alerts (shown by JS if needed) -->
+        <div id="alert-ok" class="alert ok" role="status" aria-live="polite">Thanks — message prepared in your email client.</div>
+        <div id="alert-err" class="alert err" role="alert">Please fill the required fields.</div>
+
+        <!-- NOTE: Since there’s no backend yet, this uses mailto as a fallback. -->
+        <form id="contact-form">
+          <div class="row">
+            <div class="field">
+              <label class="label" for="name">Your name <span class="req">*</span></label>
+              <input class="input" id="name" name="name" type="text" placeholder="Full name" required />
+            </div>
+            <div class="field">
+              <label class="label" for="email">Email <span class="req">*</span></label>
+              <input class="input" id="email" name="email" type="email" inputmode="email" placeholder="you@example.com" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label class="label" for="role">I am a <span class="req">*</span></label>
+              <select class="select" id="role" name="role" required>
+                <option value="">Select one…</option>
+                <option>Buyer</option>
+                <option>Seller / Wholesaler</option>
+                <option>Agent</option>
+                <option>Contractor</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="label" for="phone">Phone (optional)</label>
+              <input class="input" id="phone" name="phone" type="tel" inputmode="tel" placeholder="+1 555 000 1234" />
+              <div class="hint">If you prefer a call/WhatsApp.</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="subject">Subject <span class="req">*</span></label>
+            <input class="input" id="subject" name="subject" type="text" placeholder="Buyer onboarding / Deal submission / Question" required />
+          </div>
+
+          <div class="field">
+            <label class="label" for="message">Message <span class="req">*</span></label>
+            <textarea class="textarea" id="message" name="message" placeholder="Share your buy box OR the property address + basics, timing, and any constraints." required></textarea>
+          </div>
+
+          <div class="field">
+            <label class="label" for="gdpr">
+              <input id="gdpr" type="checkbox" required />
+              I agree to the processing of my data as described in the <a href="privacy.html" style="color: var(--ink); text-decoration: underline;">Privacy Policy</a>.
+            </label>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn">Send</button>
+            <a class="btn" href="mailto:hello@example.com?subject=Hello%20from%20Wholesalers">Email instead</a>
+            <div class="alt">Prefer WhatsApp? Add a note and we’ll reply with a number.</div>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <!-- Bottom Shortcuts / Mosaic -->
+    <section class="mosaic" aria-label="Shortcuts">
+      <a class="tile tile--third" href="options.html">
+        <div class="info">
+          <h3 class="title">Explore Options</h3>
+          <p class="desc">Acquisitions, assignments, JV, buyer lists, custom search.</p>
+        </div>
+      </a>
+      <a class="tile tile--third" href="faq.html">
+        <div class="info">
+          <h3 class="title">FAQ</h3>
+          <p class="desc">Process, documents, and timelines explained.</p>
+        </div>
+      </a>
+      <a class="tile tile--third" href="issues.html">
+        <div class="info">
+          <h3 class="title">Issues</h3>
+          <p class="desc">How we surface and resolve problems fast.</p>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div>© <span id="year"></span> Wholesalers. All rights reserved.</div>
+    <div>Made for speed and clarity • <a href="terms.html">Terms</a> • <a href="privacy.html">Privacy</a></div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mailto fallback submission: builds a mailto link from the form fields
+    const form = document.getElementById('contact-form');
+    const ok = document.getElementById('alert-ok');
+    const err = document.getElementById('alert-err');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const role = document.getElementById('role').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const gdpr = document.getElementById('gdpr').checked;
+
+      if (!name || !email || !role || !subject || !message || !gdpr) {
+        ok.style.display = 'none';
+        err.style.display = 'block';
+        return;
+      }
+
+      // Build email body
+      const lines = [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        role ? `Role: ${role}` : '',
+        phone ? `Phone: ${phone}` : '',
+        '',
+        'Message:',
+        message
+      ].filter(Boolean);
+
+      const body = encodeURIComponent(lines.join('\n'));
+      const subj = encodeURIComponent(subject);
+
+      // TODO: Replace hello@example.com with your real inbox
+      const mailto = `mailto:hello@example.com?subject=${subj}&body=${body}`;
+
+      ok.style.display = 'block';
+      err.style.display = 'none';
+
+      // Open the user's email client with the prefilled message
+      window.location.href = mailto;
+    });
+  </script>
+</body>
+</html>

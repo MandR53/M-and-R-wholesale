@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wholesalers — Terms of Service</title>
+  <meta name="description" content="Terms of Service for Wholesalers. Rules for using the site, disclaimers, liabilities, and legal notices." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Wholesalers — Terms of Service" />
+  <meta property="og:description" content="Rules for using this site, disclaimers, and legal notices." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/logo.png" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --ink: #eef2ff;
+      --ink-dim: #c7cbe6;
+      --accent-us: #1d4ed8; /* USA blue */
+      --accent-ro: #facc15; /* RO yellow */
+      --accent-red: #ef4444; /* shared red */
+      --ring: rgba(255,255,255,0.2);
+      --ring-strong: rgba(255,255,255,0.35);
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 800px at 75% -10%, rgba(29,78,216,0.25), transparent 60%),
+        radial-gradient(1000px 700px at 20% 110%, rgba(250,204,21,0.25), transparent 65%),
+        var(--bg);
+      overflow-x: hidden;
+    }
+
+    /* subtle animated background logo */
+    .bg-logo::before {
+      content: "";
+      position: fixed; inset: 0;
+      background-image: url('assets/logo.png');
+      background-repeat: no-repeat; background-position: center 10vh;
+      background-size: min(70vmin, 720px);
+      opacity: 0.06; filter: saturate(0.8) contrast(110%);
+      pointer-events: none; z-index: -1;
+      animation: floaty 18s ease-in-out infinite alternate;
+    }
+    @keyframes floaty { from { transform: translateY(0) scale(1) } to { transform: translateY(-10px) scale(1.01) } }
+
+    /* header/nav */
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 20px clamp(16px, 4vw, 48px);
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(8px);
+      background: linear-gradient(to bottom, rgba(11,16,32,0.9), rgba(11,16,32,0.35));
+      border-bottom: 1px solid var(--ring);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+    .brand-logo {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent-us), var(--accent-ro), var(--accent-red));
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.08);
+    }
+    .brand-name { font-weight: 800; letter-spacing: 0.4px; }
+    nav { display: flex; gap: 10px; flex-wrap: wrap; }
+    .nav-link {
+      padding: 10px 14px; border-radius: 999px; color: var(--ink);
+      text-decoration: none; font-weight: 600; font-size: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid var(--ring);
+      transition: transform .15s ease, background .2s ease, box-shadow .2s ease, border-color .2s ease;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
+    .nav-link:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04));
+      border-color: var(--ring-strong);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+    }
+    .nav-link[aria-current="page"] {
+      border-color: var(--ring-strong);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.32);
+    }
+
+    /* hero */
+    .hero { display: grid; place-items: center; text-align: center; padding: clamp(32px, 7vw, 96px) 20px; }
+    .hero h1 { font-family: "Playfair Display", serif; font-size: clamp(28px, 6vw, 56px); line-height: 1.05; margin: 16px 0 10px; }
+    .hero p { font-size: clamp(15px, 2.3vw, 18px); color: var(--ink-dim); margin: 0 auto; max-width: 70ch; }
+
+    /* wrapper */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    /* terms card */
+    .terms {
+      border: 1px solid var(--ring); border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+      padding: clamp(18px, 3vw, 28px);
+      margin-bottom: 26px; position: relative; overflow: hidden;
+    }
+    .terms .tag {
+      position: absolute; top: 12px; right: 12px; font-size: 11px; font-weight: 700; letter-spacing: .8px;
+      padding: 6px 10px; border-radius: 999px; border: 1px solid var(--ring);
+      background-image: linear-gradient(90deg, var(--accent-us), var(--accent-ro), var(--accent-red));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .terms h2 { font-size: clamp(18px, 3vw, 24px); margin: 18px 0 10px; }
+    .terms p { color: var(--ink-dim); font-size: 15px; line-height: 1.65; }
+    .terms ul { color: var(--ink-dim); font-size: 15px; line-height: 1.65; padding-left: 18px; }
+    .terms li + li { margin-top: 6px; }
+    .small { font-size: 13px; color: var(--ink-dim); }
+
+    /* mosaic shortcuts */
+    .mosaic { margin: 30px auto 70px; max-width: 1200px; padding: 0 20px; display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr); }
+    .tile {
+      grid-column: span 12; position: relative; overflow: hidden;
+      border-radius: 18px; border: 1px solid var(--ring);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: clamp(16px, 2.8vw, 26px);
+      text-decoration: none; color: var(--ink);
+      transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .tile:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(0,0,0,0.45); border-color: var(--ring-strong); }
+    .tile .title { font-weight: 800; font-size: clamp(18px, 2.6vw, 22px); margin-bottom: 4px; }
+    .tile .desc { color: var(--ink-dim); font-size: clamp(13px, 2.2vw, 15px); }
+    .tile::before, .tile::after {
+      content: ""; position: absolute; width: 160px; height: 160px;
+      background: conic-gradient(from 90deg, var(--accent-us), var(--accent-ro), var(--accent-red), var(--accent-us));
+      opacity: 0.12; filter: blur(8px); pointer-events: none;
+    }
+    .tile::before { bottom: -40px; left: -40px; transform: rotate(25deg); }
+    .tile::after { top: -40px; right: -40px; transform: rotate(-25deg); }
+
+    @media (min-width: 720px) {
+      .tile--third { grid-column: span 4; }
+      .tile--half { grid-column: span 6; }
+      .tile--wide { grid-column: span 12; }
+    }
+
+    /* footer */
+    footer {
+      border-top: 1px solid var(--ring);
+      padding: 24px clamp(16px, 4vw, 48px);
+      color: var(--ink-dim); font-size: 13px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    }
+    footer a { color: var(--ink); text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.2); }
+    footer a:hover { border-bottom-style: solid; }
+  </style>
+</head>
+
+<body class="bg-logo">
+  <!-- Header / Global Nav -->
+  <header>
+    <a class="brand" href="index.html" aria-label="Wholesalers Home">
+      <div class="brand-logo" aria-hidden="true"></div>
+      <div class="brand-name">WHOLESALERS</div>
+    </a>
+    <nav aria-label="Primary">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="options.html">Options</a>
+      <a class="nav-link" href="faq.html">FAQ</a>
+      <a class="nav-link" href="about.html">About</a>
+      <a class="nav-link" href="partners.html">Partners</a>
+      <a class="nav-link" href="issues.html">Issues</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+      <a class="nav-link" href="terms.html" aria-current="page">Terms</a>
+      <a class="nav-link" href="privacy.html">Privacy</a>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">Terms of Service</h1>
+      <p>These Terms govern your use of this website and any services we provide through it.</p>
+    </section>
+
+    <div class="wrap">
+      <article class="terms" aria-labelledby="intro">
+        <span class="tag" aria-hidden="true">LEGAL</span>
+        <p class="small"><strong>Last updated:</strong> October 19, 2025</p>
+
+        <h2 id="intro">1) Agreement to Terms</h2>
+        <p>By accessing or using this website (the “Site”), you agree to be bound by these Terms of Service (“Terms”) and our <a href="privacy.html" style="color: var(--ink); text-decoration: underline;">Privacy Policy</a>. If you do not agree, do not use the Site.</p>
+
+        <h2>2) Who We Are</h2>
+        <p>“Wholesalers” provides information and coordination services around real estate wholesaling and related activities across the United States and Romania. We are <em>not</em> a law firm, financial advisor, or brokerage unless explicitly stated otherwise for a given market.</p>
+
+        <h2>3) Eligibility</h2>
+        <p>You must be able to form a binding contract to use the Site. If you use the Site on behalf of a company or other entity, you represent that you are authorized to accept these Terms on its behalf.</p>
+
+        <h2>4) Site Use & Accounts</h2>
+        <ul>
+          <li>Do not misuse the Site (e.g., attempt to access it using a method other than the interface and instructions provided).</li>
+          <li>You must provide accurate information and keep it up to date.</li>
+          <li>We may modify, suspend, or discontinue the Site at any time.</li>
+        </ul>
+
+        <h2>5) No Legal, Financial, or Brokerage Advice</h2>
+        <p>All content is for informational purposes only and is provided “as is.” Decisions, valuations, and negotiations are your responsibility. Consult licensed professionals for legal, tax, financial, or brokerage advice.</p>
+
+        <h2>6) Deal Flow & Documents</h2>
+        <ul>
+          <li>Templates and checklists are samples only and may require modification for your jurisdiction and transaction.</li>
+          <li>Any assignments, JV structures, or closings must comply with applicable laws and title/escrow requirements.</li>
+          <li>We do not guarantee that any deal will close or that any timeframe or valuation will be achieved.</li>
+        </ul>
+
+        <h2>7) Fees & Payments</h2>
+        <ul>
+          <li>Fees (e.g., assignment fees, service fees) will be disclosed before engagement and, where applicable, reflected on closing statements.</li>
+          <li>You are responsible for any third-party costs (title, escrow, inspections, etc.) unless agreed otherwise in writing.</li>
+        </ul>
+
+        <h2>8) Intellectual Property</h2>
+        <p>The Site, including text, design, and graphics, is owned by or licensed to Wholesalers and is protected by applicable IP laws. You may not copy, modify, or distribute Site content without permission.</p>
+
+        <h2>9) User Content</h2>
+        <ul>
+          <li>You are responsible for content you submit (e.g., messages, files).</li>
+          <li>You warrant you have rights to submit such content and grant us a non-exclusive license to use it to operate the Site and provide services.</li>
+        </ul>
+
+        <h2>10) Prohibited Uses</h2>
+        <ul>
+          <li>Illegal, fraudulent, or deceptive activity.</li>
+          <li>Infringing, defamatory, or invasive content.</li>
+          <li>Interfering with Site security or access controls.</li>
+        </ul>
+
+        <h2>11) Third-Party Links & Services</h2>
+        <p>The Site may contain links to third-party websites or services. We are not responsible for their content, policies, or practices.</p>
+
+        <h2>12) Disclaimers</h2>
+        <p>THE SITE AND ALL CONTENT ARE PROVIDED “AS IS” AND “AS AVAILABLE.” TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
+
+        <h2>13) Limitation of Liability</h2>
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, WHOLESALERS AND ITS OFFICERS, EMPLOYEES, AND PARTNERS WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, REVENUE, DATA, OR USE, ARISING OUT OF OR RELATED TO YOUR USE OF THE SITE OR SERVICES.</p>
+
+        <h2>14) Indemnification</h2>
+        <p>You agree to defend, indemnify, and hold harmless Wholesalers from and against any claims, damages, liabilities, costs, and expenses (including reasonable attorneys’ fees) arising out of or related to your use of the Site, your content, or your violation of these Terms.</p>
+
+        <h2>15) Privacy</h2>
+        <p>Your use of the Site is subject to our <a href="privacy.html" style="color: var(--ink); text-decoration: underline;">Privacy Policy</a>, which explains how we collect and use information.</p>
+
+        <h2>16) Governing Law & Venue</h2>
+        <p>These Terms are governed by the laws of your principal contracting jurisdiction as agreed in writing with us. Absent such agreement, the governing law will be the law of the location where we primarily operate the relevant service. Venue for disputes will be in the competent courts of that location.</p>
+
+        <h2>17) Termination</h2>
+        <p>We may suspend or terminate access to the Site at any time, with or without notice, for any reason. Upon termination, your right to use the Site will cease immediately.</p>
+
+        <h2>18) Changes to These Terms</h2>
+        <p>We may update these Terms from time to time. The “Last updated” date will reflect the latest changes. Continued use of the Site after changes constitutes acceptance.</p>
+
+        <h2>19) Contact</h2>
+        <p>Questions about these Terms? Email us at <a href="mailto:hello@example.com" style="color: var(--ink); text-decoration: underline;">hello@example.com</a>.</p>
+      </article>
+    </div>
+
+    <!-- Bottom Shortcuts / Mosaic -->
+    <section class="mosaic" aria-label="Shortcuts">
+      <a class="tile tile--third" href="privacy.html">
+        <div class="info">
+          <h3 class="title">Privacy Policy</h3>
+          <p class="desc">How we handle your information.</p>
+        </div>
+      </a>
+      <a class="tile tile--third" href="faq.html">
+        <div class="info">
+          <h3 class="title">FAQ</h3>
+          <p class="desc">Process, documents, and timelines explained.</p>
+        </div>
+      </a>
+      <a class="tile tile--third" href="contact.html">
+        <div class="info">
+          <h3 class="title">Contact</h3>
+          <p class="desc">Questions? Get in touch.</p>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div>© <span id="year"></span> Wholesalers. All rights reserved.</div>
+    <div>Made for speed and clarity • <a href="terms.html">Terms</a> • <a href="privacy.html">Privacy</a></div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
